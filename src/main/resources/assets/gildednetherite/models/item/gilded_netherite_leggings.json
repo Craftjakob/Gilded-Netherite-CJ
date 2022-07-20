@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gildednetherite:item/gilded_netherite_leggings"
+  }
+}

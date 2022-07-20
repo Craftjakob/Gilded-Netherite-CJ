@@ -1,0 +1,25 @@
+{
+  "itemGroup.gilded_netherite_tab": "Gilded Netherite Tab",
+  
+  "item.gildednetherite.gilded_netherite_ingot": "Gilded Netherite Ingot",
+  "item.gildednetherite.gilded_netherite_helmet": "Gilded Netherite Helmet",
+  "item.gildednetherite.gilded_netherite_chestplate": "Gilded Netherite Chestplate",
+  "item.gildednetherite.gilded_netherite_leggings": "Gilded Netherite Leggings",
+  "item.gildednetherite.gilded_netherite_boots": "Gilded Netherite Boots",
+  
+  "item.gildednetherite.gilded_netherite_sword": "Gilded Netherite Sword",
+  "item.gildednetherite.gilded_netherite_pickaxe": "Gilded Netherite Pickaxe",
+  "item.gildednetherite.gilded_netherite_axe": "Gilded Netherite Axe",
+  "item.gildednetherite.gilded_netherite_shovel": "Gilded Netherite Shovel",
+  "item.gildednetherite.gilded_netherite_hoe": "Gilded Netherite Hoe",
+    
+  "block.gildednetherite.gilded_netherite_block": "Gilded Netherite Block",
+  
+  "advancements.nether.gildednetherite.gilded_netherite_armor.title": "Gilded Netherite Armor",
+  "advancements.nether.gildednetherite.gilded_netherite_armor.description": "New Friends!",
+  
+  "advancements.husbandry.gildednetherite.obtain_gilded_netherite_hoe.title": "Gilded Netherite Hoe!???",
+  "advancements.husbandry.gildednetherite.obtain_gilded_netherite_hoe.description": "Ok, when you can do it!?",
+  
+  "tooltip.gildednetherite.gilded_netherite_armor.description": "Makes piglins peaceful"
+}

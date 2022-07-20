@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "gildednetherite:block/gilded_netherite_block"
+  }
+}
