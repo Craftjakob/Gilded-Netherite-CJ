@@ -1,0 +1,25 @@
+{
+  "itemGroup.gilded_netherite_tab": "Golddurchzogener Netherit Tab",
+  
+  "item.gildednetherite.gilded_netherite_ingot": "Golddurchzogener Netheritbarren",
+  "item.gildednetherite.gilded_netherite_helmet": "Golddurchzogener Netherithelm",
+  "item.gildednetherite.gilded_netherite_chestplate": "Golddurchzogener Netheritharnisch",
+  "item.gildednetherite.gilded_netherite_leggings": "Golddurchzogener Netheritbeinschutz",
+  "item.gildednetherite.gilded_netherite_boots": "Golddurchzogener Netheritstiefel",
+  
+  "item.gildednetherite.gilded_netherite_sword": "Golddurchzogene Netheritschwert",
+  "item.gildednetherite.gilded_netherite_pickaxe": "Golddurchzogene Netheritspitzhacke",
+  "item.gildednetherite.gilded_netherite_axe": "Golddurchzogene Netheritaxt",
+  "item.gildednetherite.gilded_netherite_shovel": "Golddurchzogene Netheritschaufel",
+  "item.gildednetherite.gilded_netherite_hoe": "Golddurchzogene Netherithacke",
+    
+  "block.gildednetherite.gilded_netherite_block": "Golddurchzogener Netheritblock",
+  
+  "advancements.nether.gildednetherite.gilded_netherite_armor.title": "Golddurchzogene Netherit Rüstung",
+  "advancements.nether.gildednetherite.gilded_netherite_armor.description": "Neue Freunde!",
+  
+  "advancements.husbandry.gildednetherite.obtain_gilded_netherite_hoe.title": "Golddurchzogene Netherithacke!???",
+  "advancements.husbandry.gildednetherite.obtain_gilded_netherite_hoe.description": "Ok, wenn du es machen kannst!?",
+  
+  "tooltip.gildednetherite.gilded_netherite_armor.description": "Macht Piglins friedlich"
+}

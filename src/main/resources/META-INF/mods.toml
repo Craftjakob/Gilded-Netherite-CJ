@@ -1,0 +1,33 @@
+modLoader="javafml"
+loaderVersion="[41,)"
+license="MIT License"
+issueTrackerURL="https://github.com/Craftjakob/Gilded-Netherite-CJ/issues"
+
+[[mods]]
+    modId="gildednetherite"
+    version="${file.jarVersion}"
+    displayName="Gilded Netherite"
+	#updateJSONURL="https://I'm_not_working.com"
+	displayURL="https://www.curseforge.com/minecraft/mc-mods/gilded-netherite-cj-edition"
+    logoFile="icon.png"
+    itemIcon="gildednetherite:netherite_chestplate"
+    credits="Thank you for installing the Gilded Netherite Mod!"
+    authors="Craftjakob"
+
+description='''
+Gilded Netherite makes piglins peaceful.
+You can craft better Armor, Tools and more.
+'''
+	
+[[dependencies.gildednetherite]]
+    modId="forge"
+    mandatory=true
+    versionRange="[41,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.gildednetherite]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.19,1.20)"
+    ordering="NONE"
+    side="BOTH"
