@@ -33,4 +33,3 @@ public class GildedNetherite {
         LOGGER.info("Gilded Netherite is loaded!");
     }
 }
-//https://www.youtube.com/watch?v=PXkroUXxprI
