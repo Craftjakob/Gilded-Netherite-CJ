@@ -4,7 +4,7 @@ plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
 }
 
-version = '0.9'
+version = '0.9.1'
 group = 'craftjakob.gildednetherite'
 archivesBaseName = 'GildedNetherite-CJ-forge-mc1.19'
 
@@ -17,29 +17,20 @@ minecraft {
     runs {
         client {
             workingDirectory project.file('run')
-
             property 'forge.logging.markers', 'REGISTRIES'
-
             property 'forge.logging.console.level', 'debug'
-
             property 'forge.enabledGameTestNamespaces', 'gildednetherite'
-
             mods {
                 gildednetherite  {
                     source sourceSets.main
                 }
             }
         }
-
         server {
             workingDirectory project.file('run')
-
             property 'forge.logging.markers', 'REGISTRIES'
-
             property 'forge.logging.console.level', 'debug'
-
             property 'forge.enabledGameTestNamespaces', 'gildednetherite'
-
             mods {
                 gildednetherite  {
                     source sourceSets.main
@@ -48,29 +39,20 @@ minecraft {
         }
         gameTestServer {
             workingDirectory project.file('run')
-
             property 'forge.logging.markers', 'REGISTRIES'
-
             property 'forge.logging.console.level', 'debug'
-
             property 'forge.enabledGameTestNamespaces', 'gildednetherite'
-
             mods {
                 gildednetherite  {
                     source sourceSets.main
                 }
             }
         }
-
         data {
             workingDirectory project.file('run')
-
             property 'forge.logging.markers', 'REGISTRIES'
-
             property 'forge.logging.console.level', 'debug'
-
             args '--mod', 'gildednetherite', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-
             mods {
                 gildednetherite  {
                     source sourceSets.main
@@ -83,11 +65,31 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-
+    maven {
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+    
+/*
+  	maven {
+   		 name = "Progwml6 maven"
+   		 url = "https://dvs1.progwml6.com/files/maven/"
+  	}
+  	maven {
+  		  name = "ModMaven"
+  		  url = "https://modmaven.dev"
+ 	}
+ 	*/
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19-41.0.100'
+    minecraft 'net.minecraftforge:forge:1.19-41.1.0'
+    
+	//compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
+	//runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
+	//runtimeOnly fg.deobf("curse.maven:morebowscj-646406:3883984")
 
 }
 
@@ -96,7 +98,7 @@ jar {
         attributes([
                 "Specification-Title"     : "Gilded Netherite",
                 "Specification-Vendor"    : "Craftjakob",
-                "Specification-Version"   : "0.9", 
+                "Specification-Version"   : "1", 
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
                 "Implementation-Vendor"   : "Craftjakob",
