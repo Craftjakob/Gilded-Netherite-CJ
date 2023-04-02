@@ -4,15 +4,15 @@ plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
 }
 
-version = '0.9.1'
+version = '0.9.5'
 group = 'craftjakob.gildednetherite'
-archivesBaseName = 'GildedNetherite-CJ-forge-mc1.19'
+archivesBaseName = 'GildedNetherite-CJ-forge-mc1.19.4'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    mappings channel: 'official', version: '1.19'
+    mappings channel: 'official', version: '1.19.4'
 
     runs {
         client {
@@ -21,7 +21,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
             property 'forge.enabledGameTestNamespaces', 'gildednetherite'
             mods {
-                gildednetherite  {
+                gildednetherite {
                     source sourceSets.main
                 }
             }
@@ -32,7 +32,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
             property 'forge.enabledGameTestNamespaces', 'gildednetherite'
             mods {
-                gildednetherite  {
+                gildednetherite {
                     source sourceSets.main
                 }
             }
@@ -43,7 +43,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
             property 'forge.enabledGameTestNamespaces', 'gildednetherite'
             mods {
-                gildednetherite  {
+                gildednetherite {
                     source sourceSets.main
                 }
             }
@@ -53,15 +53,15 @@ minecraft {
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
             args '--mod', 'gildednetherite', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+
             mods {
-                gildednetherite  {
+                gildednetherite {
                     source sourceSets.main
                 }
             }
         }
     }
 }
-
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
@@ -71,26 +71,12 @@ repositories {
             includeGroup "curse.maven"
         }
     }
-    
-/*
-  	maven {
-   		 name = "Progwml6 maven"
-   		 url = "https://dvs1.progwml6.com/files/maven/"
-  	}
-  	maven {
-  		  name = "ModMaven"
-  		  url = "https://modmaven.dev"
- 	}
- 	*/
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19-41.1.0'
-    
-	//compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
-	//runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
-	//runtimeOnly fg.deobf("curse.maven:morebowscj-646406:3883984")
-
+    minecraft 'net.minecraftforge:forge:1.19.4-45.0.40'
+    //runtimeOnly fg.deobf("curse.maven:netheritehorsearmorcj-650478:4470232")
+    //runtimeOnly fg.deobf("curse.maven:morebowscj-646406:4470137")
 }
 
 jar {

@@ -1,25 +1,28 @@
 {
-  "itemGroup.gilded_netherite_tab": "Golddurchzogener Netherit Tab",
+  "creativemodetab.gilded_netherite_tab": "Vergoldeter Netherit",
   
-  "item.gildednetherite.gilded_netherite_ingot": "Golddurchzogener Netheritbarren",
-  "item.gildednetherite.gilded_netherite_helmet": "Golddurchzogener Netherithelm",
-  "item.gildednetherite.gilded_netherite_chestplate": "Golddurchzogener Netheritharnisch",
-  "item.gildednetherite.gilded_netherite_leggings": "Golddurchzogener Netheritbeinschutz",
-  "item.gildednetherite.gilded_netherite_boots": "Golddurchzogener Netheritstiefel",
+  "item.gildednetherite.golden_core": "Goldener Kern",
   
-  "item.gildednetherite.gilded_netherite_sword": "Golddurchzogene Netheritschwert",
-  "item.gildednetherite.gilded_netherite_pickaxe": "Golddurchzogene Netheritspitzhacke",
-  "item.gildednetherite.gilded_netherite_axe": "Golddurchzogene Netheritaxt",
-  "item.gildednetherite.gilded_netherite_shovel": "Golddurchzogene Netheritschaufel",
-  "item.gildednetherite.gilded_netherite_hoe": "Golddurchzogene Netherithacke",
-    
-  "block.gildednetherite.gilded_netherite_block": "Golddurchzogener Netheritblock",
+  "item.gildednetherite.gilded_netherite_helmet": "Vergoldeter Netherithelm",
+  "item.gildednetherite.gilded_netherite_chestplate": "Vergoldeter Netheritharnisch",
+  "item.gildednetherite.gilded_netherite_leggings": "Vergoldeter Netheritbeinschutz",
+  "item.gildednetherite.gilded_netherite_boots": "Vergoldeter Netheritstiefel",
   
-  "advancements.nether.gildednetherite.gilded_netherite_armor.title": "Golddurchzogene Netherit Rüstung",
+  "item.gildednetherite.gilded_netherite_sword": "Vergoldete Netheritschwert",
+  "item.gildednetherite.gilded_netherite_pickaxe": "Vergoldete Netheritspitzhacke",
+  "item.gildednetherite.gilded_netherite_axe": "Vergoldete Netheritaxt",
+  "item.gildednetherite.gilded_netherite_shovel": "Vergoldete Netheritschaufel",
+  "item.gildednetherite.gilded_netherite_hoe": "Vergoldete Netherithacke",
+  
+  "advancements.nether.gildednetherite.obtain_golden_core.title": "Villeicht mögen sie es auf meiner Rüstung?",
+  "advancements.nether.gildednetherite.obtain_golden_core.description": "Erhalte ein Goldenen Kern",
+  
+  "advancements.nether.gildednetherite.gilded_netherite_armor.title": "Vergoldete Netherit Rüstung",
   "advancements.nether.gildednetherite.gilded_netherite_armor.description": "Neue Freunde!",
   
-  "advancements.husbandry.gildednetherite.obtain_gilded_netherite_hoe.title": "Golddurchzogene Netherithacke!???",
+  "advancements.husbandry.gildednetherite.obtain_gilded_netherite_hoe.title": "Vergoldete Netherithacke!???",
   "advancements.husbandry.gildednetherite.obtain_gilded_netherite_hoe.description": "Ok, wenn du es machen kannst!?",
   
+  "tooltip.gildednetherite.golden_core.description": "Handle mit Piglins, um den es zu bekommen",
   "tooltip.gildednetherite.gilded_netherite_armor.description": "Macht Piglins friedlich"
 }

@@ -1,0 +1,32 @@
+GILDED NETHERITE VERSEION 0.9.5
+	1. Added Advancement for Golden Core
+	2. Reduce chance to trade Golden Core
+	
+GILDED NETHERITE VERSEION 0.9.4
+	1. REMOVED ITEMS/BLOCKS
+		- Gilded Netherite Block
+		- Gilded Netherite Ingot
+	2. ADDED ITEMS
+		- Golden Core (instead of Gilded Netherite Ingot, trade with Piglins to collect)
+	3. Balanced
+		- Armor stats
+	4. Updated lang files
+	5. Updated Forge version
+		1.19.4 now 45.0.40
+
+GILDED NETHERITE VERSEION 0.9.3
+	1. Updated Forge Version to 1.19.3 = 44.1.23 and 1.19.4 = 45.0.23
+	2. Updated the CreativeModeTab Inventory, because they change it and no it works!
+	3. For the 1.19.4 is the Armor durability multiplier updated and the Armor values.
+
+GILDED NETHERITE VERSEION 0.9.2
+	1. Gilded Netherite Block is now Lava resistance!
+	2. The Armor Tier is from GILDED_NETHERITE_INGOT changed to GILDED_NETHERITE
+	3. Updated lang files
+	4. Fixed Beacon payment item
+	5. Updated Forge version
+		1.19.1 now 42.0.9
+		
+GILDED NETHERITE VERSEION 0.9.1
+	1. Added Forge tag for Gilded Netherite Ingot
+	2. Updated Forge version

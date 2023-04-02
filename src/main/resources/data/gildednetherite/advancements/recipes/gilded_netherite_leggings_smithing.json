@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_gilded_netherite_ingot": {
+    "has_golden_core": {
       "conditions": {
         "items": [
           {
             "items": [
-              "gildednetherite:gilded_netherite_ingot"
+              "gildednetherite:golden_core"
             ]
           }
         ]
@@ -15,14 +15,14 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "gildednetheritet:gilded_netherite_leggings_smithing"
+        "recipe": "gildednetherite:gilded_netherite_leggings_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_gilded_netherite_ingot",
+      "has_golden_core",
       "has_the_recipe"
     ]
   ],
