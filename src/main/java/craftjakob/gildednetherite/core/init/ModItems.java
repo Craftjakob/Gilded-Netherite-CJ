@@ -14,7 +14,6 @@ import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.SwordItem;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -59,9 +58,5 @@ public final class ModItems {
     public static final RegistryObject<Item> GILDED_NETHERITE_HOE = ITEMS.register("gilded_netherite_hoe",
             () -> new HoeItem(ModTiers.GILDED_NETHERITE, -5, 0f,
                     new Item.Properties().fireResistant().rarity(Rarity.RARE)));
-    
-    public static void register(IEventBus eventBus) {
-	ITEMS.register(eventBus);
-	}
 }
 

@@ -15,7 +15,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 @SuppressWarnings("deprecation")
 public enum ModArmorMaterials implements ArmorMaterial {
 	   GILDED_NETHERITE("gilded_netherite", 40, new int[]{3, 6, 8, 3}, 20,
-			   SoundEvents.ARMOR_EQUIP_NETHERITE, 3.5F, 0.2F, () -> {
+			   SoundEvents.ARMOR_EQUIP_NETHERITE, 3.5F, 0.1F, () -> {
 		      return Ingredient.of(Items.NETHERITE_INGOT);
 		   });
 

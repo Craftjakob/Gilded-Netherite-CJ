@@ -1,10 +1,10 @@
 package craftjakob.gildednetherite;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
 
 import craftjakob.gildednetherite.core.ModCreativeModeTabs;
 import craftjakob.gildednetherite.core.init.ModItems;
+import com.mojang.logging.LogUtils;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -14,12 +14,12 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod(GildedNetherite.MODID)
 public class GildedNetherite {
     public static final String MODID = "gildednetherite";
-    private static final Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = LogUtils.getLogger();
 
     public GildedNetherite() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        ModItems.register(eventBus);
+        ModItems.ITEMS.register(eventBus);
         
         eventBus.addListener(this::commensetup);
         eventBus.addListener(this::addCreative);

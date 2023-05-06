@@ -4,7 +4,7 @@ plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
 }
 
-version = '0.9.5'
+version = '0.9.7'
 group = 'craftjakob.gildednetherite'
 archivesBaseName = 'GildedNetherite-CJ-forge-mc1.19.4'
 
