@@ -1,29 +1,34 @@
 package com.craftjakob.gildednetherite.core.util;
 
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 
-public enum ModToolTiers implements Tier { //Harvest Level, Durability, Efficiency, Attack Damage, Enchantability
-	/*public static final ForgeTier GILDED_NETHERITE = new ForgeTier(5, 2555, 9.5F, 4.5F, 20, Tags.Blocks.NEEDS_NETHERITE_TOOL,
-            () -> Ingredient.of(Items.NETHERITE_INGOT));*/
-	GILDED_NETHERITE(5, 2555, 9.5F, 4.5F, 20, Ingredient.of(Items.NETHERITE_INGOT));
+public enum ModToolTiers implements Tier {
+	GILDED_NETHERITE(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 2555, 9.5F, 4.5F, 20, Ingredient.of(Items.NETHERITE_INGOT));
 
-	private final int level;
+	private final TagKey<Block> incorrectBlocksForDrops;
 	private final int uses;
 	private final float speed;
 	private final float damage;
 	private final int enchantmentValue;
 	private final Ingredient repairIngredient;
 
-	ModToolTiers(int level, int uses, float speed, float damage, int enchantmentValue, Ingredient ingredient) {
-		this.level = level;
+	ModToolTiers(TagKey<Block> incorrectBlocksForDrops, int uses, float speed, float damage, int enchantmentValue, Ingredient repairIngredient) {
+		this.incorrectBlocksForDrops = incorrectBlocksForDrops;
 		this.uses = uses;
 		this.speed = speed;
 		this.damage = damage;
 		this.enchantmentValue = enchantmentValue;
-		this.repairIngredient = ingredient;
+		this.repairIngredient = repairIngredient;
+	}
+	@Override
+	public @NotNull TagKey<Block> getIncorrectBlocksForDrops() {
+		return this.incorrectBlocksForDrops;
 	}
 	@Override
 	public int getUses() {
@@ -36,10 +41,6 @@ public enum ModToolTiers implements Tier { //Harvest Level, Durability, Efficien
 	@Override
 	public float getAttackDamageBonus() {
 		return this.damage;
-	}
-	@Override
-	public int getLevel() {
-		return this.level;
 	}
 	@Override
 	public int getEnchantmentValue() {

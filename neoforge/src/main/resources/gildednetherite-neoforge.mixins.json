@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "${groupId}.${mod_id}.mixin.neoforge",
+  "compatibilityLevel": "JAVA_${java_version}",
+  "mixins": [
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

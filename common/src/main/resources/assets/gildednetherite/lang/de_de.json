@@ -12,12 +12,12 @@
   "item.gildednetherite.gilded_netherite_shovel": "Vergoldete Netheritschaufel",
   "item.gildednetherite.gilded_netherite_hoe": "Vergoldete Netherithacke",
   
-  "advancements.nether.gildednetherite.obtain_golden_core.title": "Vielleicht mögen sie es auf meiner Rüstung?",
-  "advancements.nether.gildednetherite.obtain_golden_core.description": "Erhalte ein Goldenen Kern",
-  "advancements.nether.gildednetherite.gilded_netherite_armor.title": "Neue Freunde!",
-  "advancements.nether.gildednetherite.gilded_netherite_armor.description": "Erhalte eine ganze Vergoldete Nertherite Rüstung.",
-  "advancements.husbandry.gildednetherite.obtain_gilded_netherite_hoe.title": "Vergoldete Netherithacke!???",
-  "advancements.husbandry.gildednetherite.obtain_gilded_netherite_hoe.description": "Ok, wenn du es machen kannst!?",
+  "advancement.nether.gildednetherite.obtain_golden_core.title": "Vielleicht mögen sie es auf meiner Rüstung?",
+  "advancement.nether.gildednetherite.obtain_golden_core.description": "Erhalte ein Goldenen Kern",
+  "advancement.nether.gildednetherite.gilded_netherite_armor.title": "Neue Freunde!",
+  "advancement.nether.gildednetherite.gilded_netherite_armor.description": "Erhalte eine ganze Vergoldete Nertherite Rüstung.",
+  "advancement.husbandry.gildednetherite.obtain_gilded_netherite_hoe.title": "Vergoldete Netherithacke!???",
+  "advancement.husbandry.gildednetherite.obtain_gilded_netherite_hoe.description": "Ok, wenn du es machen kannst!?",
   
   "tooltip.gildednetherite.golden_core_from_piglin": "Handle mit Piglins, um es zu bekommen",
   "tooltip.gildednetherite.golden_core_from_nether_chests": "Halte ausschau nach Nethertruhen",

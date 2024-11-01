@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:husbandry/obtain_netherite_hoe",
+  "criteria": {
+    "has_gildednetherite:gilded_netherite_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "gildednetherite:gilded_netherite_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.husbandry.gildednetherite.obtain_gilded_netherite_hoe.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "gildednetherite:gilded_netherite_hoe"
+    },
+    "title": {
+      "translate": "advancement.husbandry.gildednetherite.obtain_gilded_netherite_hoe.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_gildednetherite:gilded_netherite_hoe"
+    ]
+  ],
+  "rewards": {
+    "experience": 200
+  },
+  "sends_telemetry_event": true
+}

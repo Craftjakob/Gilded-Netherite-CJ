@@ -62,7 +62,7 @@ publishing {
             mcVersions.each { mc_version ->
                 addGameVersion(mc_version)
             }
-            addGameVersion("JAVA_17")
+            addGameVersion("Java ${java_version}")
             addGameVersion("Fabric")
             relations {
                 requiredDependency "config-api"

@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PiglinAi.class)
-public class PiglinAIMixin {
+public abstract class PiglinAIMixin {
     @Inject(method = "isWearingGold", at = @At("HEAD"), cancellable = true)
     private static void isWearingGold(LivingEntity entity, CallbackInfoReturnable<Boolean> cir) {
         for (ItemStack stack : entity.getArmorSlots()) {

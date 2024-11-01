@@ -25,6 +25,8 @@ dependencies {
     shadowCommon(project(path: ":common", configuration: "transformProductionQuilt")) { transitive false }
 }
 shadowJar {
+    exclude "fabric.mod.json"
+
     configurations = [project.configurations.shadowCommon]
     archiveClassifier = "dev-shadow"
 }
@@ -65,7 +67,7 @@ publishing {
             mcVersions.each { mc_version ->
                 addGameVersion(mc_version)
             }
-            addGameVersion("JAVA_17")
+            addGameVersion("Java ${java_version}")
             addGameVersion("Quilt")
             relations {
                 requiredDependency "config-api"

@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:nether/distract_piglin",
+  "criteria": {
+    "has_gildednetherite:golden_core": {
+      "conditions": {
+        "items": [
+          {
+            "items": "gildednetherite:golden_core"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.nether.gildednetherite.obtain_golden_core.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "gildednetherite:golden_core"
+    },
+    "title": {
+      "translate": "advancement.nether.gildednetherite.obtain_golden_core.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_gildednetherite:golden_core"
+    ]
+  ],
+  "rewards": {
+    "experience": 200
+  },
+  "sends_telemetry_event": true
+}

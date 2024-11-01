@@ -1,6 +1,6 @@
 plugins {
     id "architectury-plugin" version "3.4-SNAPSHOT"
-    id "dev.architectury.loom" version "1.5-SNAPSHOT" apply false
+    id "dev.architectury.loom" version "1.6-SNAPSHOT" apply false
     id 'io.github.0ffz.github-packages' version '1.2.+'
     id "com.matthewprenger.cursegradle" version "1.4.+"
     id "com.modrinth.minotaur" version "2.+"
@@ -27,28 +27,34 @@ subprojects {
                 mod_name: mod_name,
                 mod_version: minecraft_version + "-" + mod_version,
                 mod_authors: mod_authors,
+                java_version: java_version,
+                architectury_version: architectury_version,
+                configapi_version: configapi_version,
                 minecraft_version: minecraft_version,
                 minecraft_version_range: minecraft_version_range,
                 forge_version: forge_version,
                 forge_version_range: forge_version_range,
                 forge_loader_version_range: forge_loader_version_range,
+                neoforge_version: neoforge_version,
+                neo_version_range: neo_version_range,
+                neo_loader_version_range: neo_loader_version_range,
                 fabric_loader_version: fabric_loader_version,
-                architectury_version: architectury_version,
-                configapi_version: configapi_version,
                 mod_credits: mod_credits,
                 mod_license: mod_license,
                 mod_description: mod_description,
+                mod_sourcesURL: mod_sourcesURL,
                 mod_issueTrackerURL: mod_issueTrackerURL,
                 mod_updateJSONURL: mod_updateJSONURL,
                 mod_displayURL: mod_displayURL,
         ]
         inputs.properties replaceProperties
-        filesMatching(["META-INF/neoforge.mods.toml", "META-INF/neoforge.neoforge.mods.toml", "pack.mcmeta", "fabric.mod.json", "quilt.mod.json", "*.mixins.json"]) {
+        filesMatching(["META-INF/mods.toml", "META-INF/neoforge.mods.toml", "pack.mcmeta", "fabric.mod.json", "quilt.mod.json", "*.mixins.json", "*.common.json"]) {
             expand replaceProperties + [project: project]
         }
     }
     jar {
         from(rootProject.file("LICENSE"))
+        from(rootProject.file("README.md"))
         from(rootProject.file("LATEST_CHANGELOG.md"))
         manifest {
             attributes([
@@ -82,12 +88,20 @@ allprojects {
     base {
         archivesName = rootProject.archives_base_name + "-" + project.name + "-mc"
     }
+    //archivesBaseName = rootProject.archives_base_name + "-" + project.name + "-mc"
     version = rootProject.minecraft_version + "-" + rootProject.mod_version
     group = rootProject.groupId
 
+    repositories {
+        // Add repositories to retrieve artifacts from in here.
+        // You should only use this when depending on other mods because
+        // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
+        // See https://docs.gradle.org/current/userguide/declaring_repositories.html
+        // for more information about repositories.
+    }
     tasks.withType(JavaCompile) {
         options.encoding = "UTF-8"
-        options.release = 17
+        options.release = Integer.parseInt(java_version)
     }
     java {
         withSourcesJar()

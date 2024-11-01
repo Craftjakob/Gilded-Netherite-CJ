@@ -9,16 +9,6 @@ loom {
     forge {
         mixinConfig "${mod_id}-common.mixins.json"
         mixinConfig "${mod_id}-forge.mixins.json"
-        runs {
-            data {
-                data()
-                property 'forge.logging.markes', 'REGISTRIES'
-                property 'forge.logging.console.level', 'debug'
-                programArgs '--all', '--mod', "${mod_id}"
-                programArgs '--output', project(':common').file('src/generated/resources').absolutePath
-                programArgs '--existing', project(':common').file('src/main/resources').absolutePath
-            }
-        }
     }
 }
 configurations {
@@ -79,7 +69,7 @@ publishing {
             mcVersions.each { mc_version ->
                 addGameVersion(mc_version)
             }
-            addGameVersion("JAVA_17")
+            addGameVersion("Java ${java_version}")
             addGameVersion("Forge")
             relations {
                 requiredDependency "config-api"

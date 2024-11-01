@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "mixin": [
+  "mixins": [
     "${mod_id}-quilt.mixins.json",
     "${mod_id}-common.mixins.json"
   ],

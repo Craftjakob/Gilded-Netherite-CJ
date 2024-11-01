@@ -1,0 +1,27 @@
+// 1.21	2024-06-24T13:51:20.4591079	Tags for minecraft:item mod id gildednetherite
+d7938697b1145bcdeaca2a4dd5a5326e9465aee7 data/c/tags/item/armors/gilded_netherite_boots.json
+7316af3eac01875892aae6d28a29fd3f8e406762 data/c/tags/item/armors/gilded_netherite_chestplate.json
+1a61f13d318012ec977380c4629cfa06772fd02f data/c/tags/item/armors/gilded_netherite_helmet.json
+3b7de379723a07a2d31e186f18f790d8577c82d9 data/c/tags/item/armors/gilded_netherite_leggings.json
+3239a1fee3d8939770a66cf21a5916f82806052c data/c/tags/item/materials/golden_core.json
+255c6c2652f270e18c833e421ee546b8bb4ec2a9 data/c/tags/item/tools/gilded_netherite_axe.json
+8f0517252e3511c552a52a65b0fdc7fd74cd0524 data/c/tags/item/tools/gilded_netherite_hoe.json
+c3d7ef3d65ec5cc5d7c30b233a9e227e49378e51 data/c/tags/item/tools/gilded_netherite_pickaxe.json
+8e7e5190aa92540583cae2cab666ec5e33ee8324 data/c/tags/item/tools/gilded_netherite_shovel.json
+4a08e3db8d73c1c0daf03e46add9f2830cb99b1f data/c/tags/item/tools/gilded_netherite_sword.json
+8cbbdab676558e228f30aacd79f1894e26498185 data/gildednetherite/tags/item/gilded_netherite_armor.json
+618cd7e54e824f75bffa44351c62f02c3b4e567a data/gildednetherite/tags/item/gilded_netherite_items.json
+2cc6d4c38ac27ccbf0922781ae0501c39edebb96 data/gildednetherite/tags/item/gilded_netherite_tools.json
+255c6c2652f270e18c833e421ee546b8bb4ec2a9 data/minecraft/tags/item/axes.json
+7316af3eac01875892aae6d28a29fd3f8e406762 data/minecraft/tags/item/chest_armor.json
+c3d7ef3d65ec5cc5d7c30b233a9e227e49378e51 data/minecraft/tags/item/cluster_max_harvestables.json
+d7938697b1145bcdeaca2a4dd5a5326e9465aee7 data/minecraft/tags/item/foot_armor.json
+1a61f13d318012ec977380c4629cfa06772fd02f data/minecraft/tags/item/head_armor.json
+8f0517252e3511c552a52a65b0fdc7fd74cd0524 data/minecraft/tags/item/hoes.json
+3b7de379723a07a2d31e186f18f790d8577c82d9 data/minecraft/tags/item/leg_armor.json
+c3d7ef3d65ec5cc5d7c30b233a9e227e49378e51 data/minecraft/tags/item/pickaxes.json
+86724ed3d581290239bc60d9c71e490ae5fa878d data/minecraft/tags/item/piglin_loved.json
+8e7e5190aa92540583cae2cab666ec5e33ee8324 data/minecraft/tags/item/shovels.json
+4a08e3db8d73c1c0daf03e46add9f2830cb99b1f data/minecraft/tags/item/swords.json
+9f3ada56119a4c6ca1cbc8ff281fa5f720c50ef2 data/minecraft/tags/item/trimmable_armor.json
+8f0517252e3511c552a52a65b0fdc7fd74cd0524 data/quark/tags/item/big_harvesting_hoes.json

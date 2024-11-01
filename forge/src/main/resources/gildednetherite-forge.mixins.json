@@ -2,7 +2,7 @@
   "required": true,
   "minVersion": "0.8",
   "package": "${groupId}.${mod_id}.mixin.forge",
-  "compatibilityLevel": "JAVA_17",
+  "compatibilityLevel": "JAVA_${java_version}",
   "mixins": [
   ],
   "client": [
