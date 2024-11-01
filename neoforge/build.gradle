@@ -1,0 +1,87 @@
+plugins {
+    id "com.github.johnrengelman.shadow" version "7.1.2"
+}
+architectury {
+    platformSetupLoomIde()
+    neoForge()
+}
+configurations {
+    common
+    shadowCommon
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentNeoForge.extendsFrom common
+}
+dependencies {
+    neoForge "net.neoforged:neoforge:${rootProject.neoforge_version}"
+    modApi "dev.architectury:architectury-neoforge:${rootProject.architectury_version}"
+    modImplementation "com.craftjakob:configapi-neoforge:${configapi_version}"
+
+    common(project(path: ":common", configuration: "namedElements")) { transitive false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionNeoForge")) { transitive = false }
+}
+shadowJar {
+    exclude "fabric.mod.json"
+
+    configurations = [project.configurations.shadowCommon]
+    archiveClassifier.set("dev-shadow")
+}
+remapJar {
+    inputFile.set shadowJar.archiveFile
+    dependsOn shadowJar
+}
+sourcesJar {
+    def commonSources = project(":common").sourcesJar
+    dependsOn commonSources
+    from commonSources.archiveFile.map { zipTree(it) }
+}
+components.java {
+    withVariantsFromConfiguration(project.configurations.shadowRuntimeElements) {
+        skip()
+    }
+}
+publishing {
+    publications {
+        mavenNeoForge(MavenPublication) {
+            groupId = rootProject.groupId
+            artifactId = rootProject.mod_id + "-" + project.name
+            from components.java
+        }
+    }
+    repositories {
+
+    }
+    curseforge {
+        apiKey = System.getenv("CURSEFORGE_TOKEN")
+        project {
+            id = "${curseforge_id}"
+            changelog = file("$rootDir/LATEST_CHANGELOG.md")
+            changelogType = "markdown"
+            releaseType = "release"
+            mainArtifact(tasks.remapJar)
+            addGameVersion("${minecraft_version}")
+            addGameVersion("1.20.1")
+            addGameVersion("NeoForge")
+            addGameVersion("Java 17")
+            relations {
+                requiredDependency "config-api"
+                requiredDependency "architectury-api"
+            }
+        }
+    }
+    modrinth {
+        token = System.getenv("MODRINTH_TOKEN")
+        projectId = "${modrinth_id}"
+        versionNumber = "${version}"
+        versionType = "release"
+        versionName = "${mod_name} ${version}"
+        changelog = new File("$rootDir/LATEST_CHANGELOG.md").text
+        uploadFile = remapJar
+        gameVersions = [mc_versions.split(",")]
+        loaders = ["neoforge"]
+        dependencies {
+            required.project "config-api"
+            required.project "architectury-api"
+        }
+    }
+}

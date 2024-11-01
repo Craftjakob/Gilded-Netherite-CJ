@@ -1,0 +1,95 @@
+plugins {
+    id "com.github.johnrengelman.shadow" version "7.1.2"
+}
+repositories {
+    maven { url "https://maven.quiltmc.org/repository/release/" }
+}
+architectury {
+    platformSetupLoomIde()
+    loader("quilt")
+}
+configurations {
+    common
+    shadowCommon
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentQuilt.extendsFrom common
+}
+dependencies {
+    modImplementation "org.quiltmc:quilt-loader:${rootProject.quilt_loader_version}"
+    modApi "org.quiltmc.quilted-fabric-api:quilted-fabric-api:${rootProject.quilt_fabric_api_version}"
+    modApi("dev.architectury:architectury-fabric:${rootProject.architectury_version}") {
+        exclude group: "net.fabricmc"
+        exclude group: "net.fabricmc.fabric-api"
+    }
+    modImplementation "com.craftjakob:configapi-quilt:${configapi_version}"
+
+    common(project(path: ":common", configuration: "namedElements")) { transitive false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionQuilt")) { transitive false }
+}
+shadowJar {
+    exclude "fabric.mod.json"
+
+    configurations = [project.configurations.shadowCommon]
+    archiveClassifier = "dev-shadow"
+}
+remapJar {
+    inputFile.set shadowJar.archiveFile
+    dependsOn shadowJar
+}
+sourcesJar {
+    def commonSources = project(":common").sourcesJar
+    dependsOn commonSources
+    from commonSources.archiveFile.map { zipTree(it) }
+}
+components.java {
+    withVariantsFromConfiguration(project.configurations.shadowRuntimeElements) {
+        skip()
+    }
+}
+publishing {
+    publications {
+        mavenQuilt(MavenPublication) {
+            groupId = rootProject.groupId
+            artifactId = rootProject.mod_id + "-" + project.name
+            from components.java
+        }
+    }
+    repositories {
+
+    }
+    curseforge {
+        apiKey = System.getenv("CURSEFORGE_TOKEN")
+        project {
+            id = "${curseforge_id}"
+            changelog = file("$rootDir/LATEST_CHANGELOG.md")
+            changelogType = "markdown"
+            releaseType = "release"
+            mainArtifact(tasks.remapJar)
+            addGameVersion("${minecraft_version}")
+            addGameVersion("1.20.1")
+            addGameVersion("Quilt")
+            addGameVersion("Java 17")
+            relations {
+                requiredDependency "config-api"
+                requiredDependency "architectury-api"
+            }
+        }
+    }
+    modrinth {
+        token = System.getenv("MODRINTH_TOKEN")
+        projectId = "${modrinth_id}"
+        versionNumber = "${version}"
+        versionType = "release"
+        versionName = "${mod_name} ${version}"
+        changelog = new File("$rootDir/LATEST_CHANGELOG.md").text
+        uploadFile = remapJar
+        gameVersions = [mc_versions.split(",")]
+        loaders = ["quilt"]
+        dependencies {
+            required.project "qsl"
+            required.project "config-api"
+            required.project "architectury-api"
+        }
+    }
+}

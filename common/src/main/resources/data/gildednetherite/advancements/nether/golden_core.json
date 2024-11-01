@@ -1,0 +1,40 @@
+{
+	"display": {
+		"icon": {
+			"item": "gildednetherite:golden_core"
+		},
+		"title": {
+			"translate": "advancements.nether.gildednetherite.obtain_golden_core.title"
+		},
+		"description": {
+			"translate": "advancements.nether.gildednetherite.obtain_golden_core.description"
+		},
+		"frame": "challenge",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"parent": "minecraft:nether/distract_piglin",
+	"criteria": {
+		"obtain_golden_core": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"gildednetherite:golden_core"
+						]
+					}
+				]
+			}
+		}
+	},
+	"requirements": [
+		[
+			"obtain_golden_core"
+		]
+	],
+	"rewards": {
+		"experience": 25
+	}
+}

@@ -1,0 +1,27 @@
+{
+  "creativemodetab.gildednetherite.gildednetherite_tab": "Goldenes Netherit",
+  "item.gildednetherite.golden_core": "Goldener Kern",
+  
+  "item.gildednetherite.gilded_netherite_helmet": "Vergoldeter Netherithelm",
+  "item.gildednetherite.gilded_netherite_chestplate": "Vergoldeter Ne theritharnisch",
+  "item.gildednetherite.gilded_netherite_leggings": "Vergoldeter Netheritbeinschutz",
+  "item.gildednetherite.gilded_netherite_boots": "Vergoldeter Netheritstiefel",
+  
+  "item.gildednetherite.gilded_netherite_sword": "Vergoldete Netheritschwert",
+  "item.gildednetherite.gilded_netherite_pickaxe": "Vergoldete Netheritspitzhacke",
+  "item.gildednetherite.gilded_netherite_axe": "Vergoldete Netheritaxt",
+  "item.gildednetherite.gilded_netherite_shovel": "Vergoldete Netheritschaufel",
+  "item.gildednetherite.gilded_netherite_hoe": "Vergoldete Netherithacke",
+  
+  "advancements.nether.gildednetherite.obtain_golden_core.title": "Vielleicht mögen sie es auf meiner Rüstung?",
+  "advancements.nether.gildednetherite.obtain_golden_core.description": "Erhalte ein Goldenen Kern",
+  "advancements.nether.gildednetherite.gilded_netherite_armor.title": "Neue Freunde!",
+  "advancements.nether.gildednetherite.gilded_netherite_armor.description": "Erhalte eine ganze Vergoldete Nertherite Rüstung.",
+  "advancements.husbandry.gildednetherite.obtain_gilded_netherite_hoe.title": "Vergoldete Netherithacke!???",
+  "advancements.husbandry.gildednetherite.obtain_gilded_netherite_hoe.description": "Ok, wenn du es machen kannst!?",
+  
+  "tooltip.gildednetherite.golden_core_from_piglin": "Handle mit Piglins, um es zu bekommen",
+  "tooltip.gildednetherite.golden_core_from_nether_chests": "Halte ausschau nach Nethertruhen",
+  
+  "tooltip.gildednetherite.gilded_netherite_armor": "Macht Piglins friedlich"
+}

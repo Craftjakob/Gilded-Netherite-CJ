@@ -1,0 +1,27 @@
+{
+  "creativemodetab.gildednetherite.gildednetherite_tab": "Dorada netherita",
+  "item.gildednetherite.golden_core": "Núcleo dorado",
+  
+  "item.gildednetherite.gilded_netherite_helmet": "Dorada casco de netherita",
+  "item.gildednetherite.gilded_netherite_chestplate": "Dorada peto de netherita",
+  "item.gildednetherite.gilded_netherite_leggings": "Dorada grebas de netherita",
+  "item.gildednetherite.gilded_netherite_boots": "Dorada botas de netherita",
+  
+  "item.gildednetherite.gilded_netherite_sword": "Dorada espada de netherita",
+  "item.gildednetherite.gilded_netherite_pickaxe": "Dorada pico de netherita",
+  "item.gildednetherite.gilded_netherite_axe": "Dorada hacha de netherite",
+  "item.gildednetherite.gilded_netherite_shovel": "Dorada pala de netherita",
+  "item.gildednetherite.gilded_netherite_hoe": "Dorada azada de netherita",
+  
+  "advancements.nether.gildednetherite.obtain_golden_core.title": "¿Quizá les gusta en mi armadura?",
+  "advancements.nether.gildednetherite.obtain_golden_core.description": "Obtener Núcleo Dorado",
+  "advancements.nether.gildednetherite.gilded_netherite_armor.title": "Nuevos amigos!",
+  "advancements.nether.gildednetherite.gilded_netherite_armor.description": "Obtener una armadura completa de Netherite dorada.",
+  "advancements.husbandry.gildednetherite.obtain_gilded_netherite_hoe.title": "¿¿¿¡Dorada azada de netherita!???",
+  "advancements.husbandry.gildednetherite.obtain_gilded_netherite_hoe.description": "¿¡Ok si puedes hacerlo!?",
+  
+  "tooltip.gildednetherite.golden_core_from_piglin": "Intercambia con Piglins para recogerlo",
+  "tooltip.gildednetherite.golden_core_from_nether_chests": "Mira en cofres del Nether",
+  
+  "tooltip.gildednetherite.gilded_netherite_armor": "Hace que los Piglins sean pacíficos"
+}
