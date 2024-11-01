@@ -1,127 +1,95 @@
 plugins {
-    id 'eclipse'
-    id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '5.1.+'
+    id "architectury-plugin" version "3.4-SNAPSHOT"
+    id "dev.architectury.loom" version "1.5-SNAPSHOT" apply false
+    id 'io.github.0ffz.github-packages' version '1.2.+'
+    id "com.matthewprenger.cursegradle" version "1.4.+"
+    id "com.modrinth.minotaur" version "2.+"
 }
-
-version = '0.9.1'
-group = 'craftjakob.gildednetherite'
-archivesBaseName = 'GildedNetherite-CJ-forge-mc1.19'
-
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
-
-println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
-minecraft {
-    mappings channel: 'official', version: '1.19'
-
-    runs {
-        client {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'gildednetherite'
-            mods {
-                gildednetherite  {
-                    source sourceSets.main
-                }
-            }
-        }
-        server {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'gildednetherite'
-            mods {
-                gildednetherite  {
-                    source sourceSets.main
-                }
-            }
-        }
-        gameTestServer {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'gildednetherite'
-            mods {
-                gildednetherite  {
-                    source sourceSets.main
-                }
-            }
-        }
-        data {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            args '--mod', 'gildednetherite', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-            mods {
-                gildednetherite  {
-                    source sourceSets.main
-                }
-            }
+architectury {
+    minecraft = rootProject.minecraft_version
+}
+subprojects {
+    apply plugin: "dev.architectury.loom"
+    apply plugin: "maven-publish"
+    apply plugin: "com.matthewprenger.cursegradle"
+    apply plugin: "com.modrinth.minotaur"
+    loom {
+        silentMojangMappingsLicense()
+    }
+    dependencies {
+        minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
+        mappings loom.officialMojangMappings()
+    }
+    processResources {
+        var replaceProperties = [
+                groupId: groupId,
+                mod_id: mod_id,
+                mod_name: mod_name,
+                mod_version: minecraft_version + "-" + mod_version,
+                mod_authors: mod_authors,
+                minecraft_version: minecraft_version,
+                minecraft_version_range: minecraft_version_range,
+                forge_version: forge_version,
+                forge_version_range: forge_version_range,
+                forge_loader_version_range: forge_loader_version_range,
+                fabric_loader_version: fabric_loader_version,
+                architectury_version: architectury_version,
+                configapi_version: configapi_version,
+                mod_credits: mod_credits,
+                mod_license: mod_license,
+                mod_description: mod_description,
+                mod_issueTrackerURL: mod_issueTrackerURL,
+                mod_updateJSONURL: mod_updateJSONURL,
+                mod_displayURL: mod_displayURL,
+        ]
+        inputs.properties replaceProperties
+        filesMatching(["META-INF/neoforge.mods.toml", "META-INF/neoforge.neoforge.mods.toml", "pack.mcmeta", "fabric.mod.json", "quilt.mod.json", "*.mixins.json"]) {
+            expand replaceProperties + [project: project]
         }
     }
-}
-
-sourceSets.main.resources { srcDir 'src/generated/resources' }
-
-repositories {
-    maven {
-        url "https://cursemaven.com"
-        content {
-            includeGroup "curse.maven"
-        }
-    }
-    
-/*
-  	maven {
-   		 name = "Progwml6 maven"
-   		 url = "https://dvs1.progwml6.com/files/maven/"
-  	}
-  	maven {
-  		  name = "ModMaven"
-  		  url = "https://modmaven.dev"
- 	}
- 	*/
-}
-
-dependencies {
-    minecraft 'net.minecraftforge:forge:1.19-41.1.0'
-    
-	//compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
-	//runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
-	//runtimeOnly fg.deobf("curse.maven:morebowscj-646406:3883984")
-
-}
-
-jar {
-    manifest {
-        attributes([
-                "Specification-Title"     : "Gilded Netherite",
-                "Specification-Vendor"    : "Craftjakob",
-                "Specification-Version"   : "1", 
-                "Implementation-Title"    : project.name,
-                "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "Craftjakob",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
-    }
-}
-
-jar.finalizedBy('reobfJar')
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifact jar
+    jar {
+        from(rootProject.file("LICENSE"))
+        from(rootProject.file("LATEST_CHANGELOG.md"))
+        manifest {
+            attributes([
+                'Specification-Title'     : mod_name,
+                'Specification-Vendor'    : mod_authors,
+                'Specification-Version'   : project.jar.archiveVersion,
+                'Implementation-Title'    : project.name,
+                'Implementation-Version'  : project.jar.archiveVersion,
+                'Implementation-Vendor'   : mod_authors,
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                'Timestamp'               : System.currentTimeMillis(),
+                'Built-On-Java'           : "${System.getProperty('java.vm.version')} (${System.getProperty('java.vm.vendor')})",
+                'Build-On-Minecraft'      : minecraft_version
+            ])
         }
     }
     repositories {
-        maven {
-            url "file://${project.projectDir}/mcmodsrepo"
-        }
+        maven { url "https://maven.neoforged.net/releases/" }
+        maven { url "https://maven.quiltmc.org/repository/release/" }
+        maven githubPackage.invoke("Craftjakob/Config-API")
     }
 }
+allprojects {
+    apply plugin: "java"
+    apply plugin: "architectury-plugin"
+    apply plugin: "maven-publish"
 
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
+    sourceSets {
+        main.resources.srcDirs = ['src/main/resources', 'src/generated/resources']
+    }
+    base {
+        archivesName = rootProject.archives_base_name + "-" + project.name + "-mc"
+    }
+    version = rootProject.minecraft_version + "-" + rootProject.mod_version
+    group = rootProject.groupId
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+        options.release = 17
+    }
+    java {
+        withSourcesJar()
+    }
 }
