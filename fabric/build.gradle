@@ -1,0 +1,89 @@
+plugins {
+    id "com.github.johnrengelman.shadow" version "8.1.1"
+}
+architectury {
+    platformSetupLoomIde()
+    fabric()
+}
+configurations {
+    common
+    shadowCommon
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentFabric.extendsFrom common
+}
+dependencies {
+    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+    modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
+    modApi "dev.architectury:architectury-fabric:${rootProject.architectury_version}"
+    modImplementation "com.craftjakob:configapi-fabric:${rootProject.configapi_version}"
+
+    common(project(path: ":common", configuration: "namedElements")) { transitive false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
+}
+shadowJar {
+    configurations = [project.configurations.shadowCommon]
+    archiveClassifier.set("dev-shadow")
+}
+remapJar {
+    inputFile.set(shadowJar.archiveFile)
+    dependsOn(shadowJar)
+}
+sourcesJar {
+    def commonSources = project(":common").sourcesJar
+    dependsOn commonSources
+    from commonSources.archiveFile.map { zipTree(it) }
+}
+components.java {
+    withVariantsFromConfiguration(project.configurations.shadowRuntimeElements) {
+        skip()
+    }
+}
+publishing {
+    publications {
+        mavenFabric(MavenPublication) {
+            groupId = rootProject.groupId
+            artifactId = rootProject.mod_id + "-" + project.name
+            from components.java
+        }
+    }
+    repositories {
+
+    }
+    curseforge {
+        apiKey = System.getenv("CURSEFORGE_TOKEN")
+        project {
+            id = "${curseforge_id}"
+            changelog = file("$rootDir/LATEST_CHANGELOG.md")
+            changelogType = "markdown"
+            releaseType = "release"
+            mainArtifact(tasks.remapJar)
+            def mcVersions = mc_versions.split(",")
+            mcVersions.each { mc_version ->
+                addGameVersion(mc_version)
+            }
+            addGameVersion("JAVA_17")
+            addGameVersion("Fabric")
+            relations {
+                requiredDependency "config-api"
+                requiredDependency "architectury-api"
+            }
+        }
+    }
+    modrinth {
+        token = System.getenv("MODRINTH_TOKEN")
+        projectId = "${modrinth_id}"
+        versionNumber = "${version}"
+        versionType = "release"
+        versionName = "${mod_name} ${version}"
+        changelog = new File("$rootDir/LATEST_CHANGELOG.md").text
+        uploadFile = remapJar
+        gameVersions = mc_versions.split(",").toList()
+        loaders = ["fabric"]
+        dependencies {
+            required.project "fabric-api"
+            required.project "config-api"
+            required.project "architectury-api"
+        }
+    }
+}

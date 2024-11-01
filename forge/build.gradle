@@ -1,0 +1,105 @@
+plugins {
+    id "com.github.johnrengelman.shadow" version "8.1.1"
+}
+architectury {
+    platformSetupLoomIde()
+    forge()
+}
+loom {
+    forge {
+        mixinConfig "${mod_id}-common.mixins.json"
+        mixinConfig "${mod_id}-forge.mixins.json"
+        runs {
+            data {
+                data()
+                property 'forge.logging.markes', 'REGISTRIES'
+                property 'forge.logging.console.level', 'debug'
+                programArgs '--all', '--mod', "${mod_id}"
+                programArgs '--output', project(':common').file('src/generated/resources').absolutePath
+                programArgs '--existing', project(':common').file('src/main/resources').absolutePath
+            }
+        }
+    }
+}
+configurations {
+    common
+    shadowCommon
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentForge.extendsFrom common
+}
+dependencies {
+    forge "net.minecraftforge:forge:${rootProject.forge_version}"
+    modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
+    modImplementation "com.craftjakob:configapi-forge:${configapi_version}"
+
+    common(project(path: ":common", configuration: "namedElements")) { transitive false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
+}
+shadowJar {
+    exclude "fabric.mod.json"
+
+    configurations = [project.configurations.shadowCommon]
+    archiveClassifier.set("dev-shadow")
+}
+remapJar {
+    inputFile.set(shadowJar.archiveFile)
+    dependsOn(shadowJar)
+}
+sourcesJar {
+    def commonSources = project(":common").sourcesJar
+    dependsOn commonSources
+    from commonSources.archiveFile.map { zipTree(it) }
+}
+components.java {
+    withVariantsFromConfiguration(project.configurations.shadowRuntimeElements) {
+        skip()
+    }
+}
+publishing {
+    publications {
+        mavenForge(MavenPublication) {
+            groupId = rootProject.groupId
+            artifactId = rootProject.mod_id + "-" + project.name
+            from components.java
+        }
+    }
+    repositories {
+
+    }
+    curseforge {
+        apiKey = System.getenv("CURSEFORGE_TOKEN")
+        project {
+            id = "${curseforge_id}"
+            changelog = file("$rootDir/LATEST_CHANGELOG.md")
+            changelogType = "markdown"
+            releaseType = "release"
+            mainArtifact(tasks.remapJar)
+            def mcVersions = mc_versions.split(",")
+            mcVersions.each { mc_version ->
+                addGameVersion(mc_version)
+            }
+            addGameVersion("JAVA_17")
+            addGameVersion("Forge")
+            relations {
+                requiredDependency "config-api"
+                requiredDependency "architectury-api"
+            }
+        }
+    }
+    modrinth {
+        token = System.getenv("MODRINTH_TOKEN")
+        projectId = "${modrinth_id}"
+        versionNumber = "${version}"
+        versionType = "release"
+        versionName = "${mod_name} ${version}"
+        changelog = new File("$rootDir/LATEST_CHANGELOG.md").text
+        uploadFile = remapJar
+        gameVersions = mc_versions.split(",").toList()
+        loaders = ["forge"]
+        dependencies {
+            required.project "config-api"
+            required.project "architectury-api"
+        }
+    }
+}
